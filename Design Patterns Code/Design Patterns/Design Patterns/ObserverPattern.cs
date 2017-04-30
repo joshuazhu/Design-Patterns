@@ -5,14 +5,14 @@ namespace ObserverPattern
 {
     static class ObserverPattern
     {
-        public static void Main()
+/*        public static void Main()
         {
             var subject = new ConcreteSubject();
             subject.Attach(new ConcreteObserver(subject, "Observer 1"));
             subject.Attach(new ConcreteObserver(subject, "Observer 2"));
             subject.Attach(new ConcreteObserver(subject, "Observer 3"));
             subject.SetState("STATE");
-        }
+        }*/
     }
 
     public abstract class SubjectBase
