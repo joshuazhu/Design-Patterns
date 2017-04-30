@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesignPatterns
+namespace SimpleFactoryPattern
 {
     public abstract class BMW
     {
@@ -40,11 +40,11 @@ namespace DesignPatterns
             }
         }
 
-        public static void Main()
+     /*   public static void Main()
         {
             var factory = new SimpleFactoryPattern();
             var bmw3 = factory.createBMW(3);
             var bmw5 = factory.createBMW(5);
-        }
+        }*/
     }
 }
