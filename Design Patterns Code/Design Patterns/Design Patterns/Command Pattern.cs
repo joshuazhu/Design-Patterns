@@ -7,24 +7,28 @@ namespace CommandPattern
     /*
      * Receiver 
      */
-    public abstract class Receiver
+    public class Document
     {
-        public abstract void doSomeThing();
-    }
+        private List<string> _textArray = new List<string>();
 
-    public class ConcreteReceiver1 : Receiver
-    {
-        public override void doSomeThing()
+        public void Write(string text)
         {
-            Console.WriteLine("do something 1");
+            _textArray.Add(text);
         }
-    }
-
-    public class ConcreteReceiver2 : Receiver
-    {
-        public override void doSomeThing()
+        public void Erase(string text)
         {
-            Console.WriteLine("do something 2");
+            _textArray.Remove(text);
+        }
+        public void Erase(int textLevel)
+        {
+            _textArray.RemoveAt(textLevel);
+        }
+        public string ReadDocument()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (string text in _textArray)
+                sb.Append(text);
+            return sb.ToString();
         }
     }
 
@@ -33,51 +37,65 @@ namespace CommandPattern
      */
     public abstract class Command
     {
-        public Receiver Receiver { set; get; }
-        public abstract void execute();
+        abstract public void Redo();
+        abstract public void Undo();
     }
 
-    public class ConcreteCommand1 : Command
+    public class DocumentEditCommand : Command
     {
-        public ConcreteCommand1(Receiver _receiver)
+        private Document _editableDoc;
+
+        //store the current state
+        private string _text;
+
+        public DocumentEditCommand(Document doc, string text)
         {
-            Receiver = _receiver;
+            _editableDoc = doc;
+            _text = text;
+            _editableDoc.Write(_text);
         }
 
-        public override void execute()
+        public override void Redo()
         {
-            Receiver.doSomeThing();
-        }
-    }
-
-    public class ConcreteCommand2 : Command
-    {
-        public ConcreteCommand2(Receiver _receiver)
-        {
-            Receiver = _receiver;
+            _editableDoc.Write(_text);
         }
 
-        public override void execute()
+        public override void Undo()
         {
-            Receiver.doSomeThing();
+            _editableDoc.Erase(_text);
         }
     }
 
     /*
      * Invoker
      */
-    public class Invoker
+    public class DocumentInvoker
     {
-        private Command Command;
+        private List<Command> _commands = new List<Command>();
+        private Document _doc = new Document();
 
-        public void SetCommand(Command _command)
+        public void Redo(int level)
         {
-            Command = _command;
+            Console.WriteLine("---- Redo {0} level ", level);
+            ((Command)_commands[level]).Redo();
         }
 
-        public void Action()
+        public void Undo(int level)
         {
-            this.Command.execute();
+            Console.WriteLine("---- Undo {0} level ", level);
+            ((Command)_commands[level]).Undo();
+        }
+
+        public void Write(string text)
+        {
+            DocumentEditCommand cmd = new
+                DocumentEditCommand(_doc, text);
+            _commands.Add(cmd);
+        }
+
+        public void Read()
+        {
+            Console.WriteLine(_doc.ReadDocument());
         }
     }
 
@@ -88,11 +106,22 @@ namespace CommandPattern
     {
         public static void Main(String[] args)
         {
-            var invoker = new Invoker();
-            var receiver = new ConcreteReceiver1();
-            var command = new ConcreteCommand1(receiver);
-            invoker.SetCommand(command);
-            invoker.Action();
+            DocumentInvoker instance = new DocumentInvoker();
+            instance.Write("This is the original text.");
+            instance.Write(" Here is some other text.");
+            instance.Read();
+            instance.Undo(1);
+            instance.Read();
+            instance.Redo(1);
+            instance.Read();
+            instance.Write(" And a little more text.");
+            instance.Read();
+            instance.Undo(2);
+            instance.Read();
+            instance.Redo(2);
+            instance.Read();
+            instance.Undo(1);
+            instance.Read();
         }
     }
 }
