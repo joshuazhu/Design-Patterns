@@ -74,11 +74,11 @@ namespace AbstractFactoryPattern
             return new AirConditionBMW532();
         }
 
-        public static void Main()
+        /*public static void Main()
         {
             var factoryBMW320 = new FactoryBMW320();
             var bmw320 = factoryBMW320.createBMW();
             var bmw320Ac = factoryBMW320.createAirC();
-        }
+        }*/
     }
 }
