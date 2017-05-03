@@ -42,11 +42,11 @@ namespace AdapterPattern
             _adaptee.MethodB();
         }
 
-        public static void Main()
+       /* public static void Main()
         {
             var adapter = new Adapter();
             var client = new Client(adapter);
             client.Request();
-        }
+        }*/
     }
 }
