@@ -104,7 +104,7 @@ namespace CommandPattern
      */
     public class Client
     {
-        public static void Main(String[] args)
+        /*public static void Main(String[] args)
         {
             DocumentInvoker instance = new DocumentInvoker();
             instance.Write("This is the original text.");
@@ -122,6 +122,6 @@ namespace CommandPattern
             instance.Read();
             instance.Undo(1);
             instance.Read();
-        }
+        }*/
     }
 }
