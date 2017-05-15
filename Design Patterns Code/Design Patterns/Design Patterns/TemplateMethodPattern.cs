@@ -33,16 +33,14 @@ namespace TemplateMethodPattern
         {
             Console.WriteLine("method2");
         }
-
     }
 
-    //Client class
-    public class Client
+    public class TemplateMethodPatternRunner : IPatterRunner
     {
-        /*public static void Main(String[] args)
+        public void RunPattern()
         {
             ConcreteClass class1 = new ConcreteClass();
             class1.templateMethod();
-        }*/
+        }
     }
 }

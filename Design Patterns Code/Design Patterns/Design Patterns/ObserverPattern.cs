@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using BuilderPattern;
+using TemplateMethodPattern;
 
 namespace ObserverPattern
 {
@@ -74,6 +76,18 @@ namespace ObserverPattern
         {
             string subjectState = _subject.GetState();
             Console.WriteLine(_name + ": " + subjectState);
+        }
+    }
+
+    public class ObserverPatternRunner : IPatterRunner
+    {
+        public void RunPattern()
+        {
+            var Builder1 = new ConcreteBuilder1();
+            var Director = new DirectorCashier();
+
+            Director.BuildFood(Builder1);
+            Builder1.GetProduct().ShowToClient();
         }
     }
 }

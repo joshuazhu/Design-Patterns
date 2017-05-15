@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BuilderPattern;
+using TemplateMethodPattern;
 
 namespace CommandPattern
 {
@@ -99,12 +101,9 @@ namespace CommandPattern
         }
     }
 
-    /*
-     * Client
-     */
-    public class Client
+    public class CommandPatternRunner : IPatterRunner
     {
-        /*public static void Main(String[] args)
+        public void RunPattern()
         {
             DocumentInvoker instance = new DocumentInvoker();
             instance.Write("This is the original text.");
@@ -122,6 +121,6 @@ namespace CommandPattern
             instance.Read();
             instance.Undo(1);
             instance.Read();
-        }*/
+        }
     }
 }

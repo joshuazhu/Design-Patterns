@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BuilderPattern;
+using TemplateMethodPattern;
 
 namespace FactoryMethodPattern
 {
@@ -46,15 +48,15 @@ namespace FactoryMethodPattern
         }
     }
 
-  /*  public class FactoryMethodPattern
+    public class FactoryMethodPatternRunner : IPatterRunner
     {
-        public static void Main()
+        public void RunPattern()
         {
             var factoryBMW320 = new FactoryBMW320();
             var bmw3 = factoryBMW320.CreateBMW();
 
-            var factoryBMW532= new FactoryBMW532();
+            var factoryBMW532 = new FactoryBMW532();
             var bmw5 = factoryBMW532.CreateBMW();
         }
-    }*/
+    }
 }

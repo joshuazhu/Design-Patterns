@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BuilderPattern;
+using TemplateMethodPattern;
 
 namespace MediatorPattern
 {
@@ -64,9 +66,9 @@ namespace MediatorPattern
         void ReceiveMessage(string message);
     }
 
-    public class Client
+    public class MediatorPatternRunner : IPatterRunner
     {
-        public static void Main()
+        public void RunPattern()
         {
             var ColleagueA = new ConcreteColleague("A");
             var ColleagueB = new ConcreteColleague("B");

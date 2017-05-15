@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BuilderPattern;
+using TemplateMethodPattern;
 
 namespace AbstractFactoryPattern
 {
@@ -73,12 +75,15 @@ namespace AbstractFactoryPattern
         {
             return new AirConditionBMW532();
         }
+    }
 
-        /*public static void Main()
+    public class AbstractFactoryRunner : IPatterRunner
+    {
+        public void RunPattern()
         {
             var factoryBMW320 = new FactoryBMW320();
             var bmw320 = factoryBMW320.createBMW();
             var bmw320Ac = factoryBMW320.createAirC();
-        }*/
+        }
     }
 }

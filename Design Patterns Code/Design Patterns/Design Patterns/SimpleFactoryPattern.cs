@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BuilderPattern;
+using TemplateMethodPattern;
 
 namespace SimpleFactoryPattern
 {
@@ -39,12 +41,15 @@ namespace SimpleFactoryPattern
                     return new BMW320();
             }
         }
+    }
 
-     /*   public static void Main()
+    public class SimpleFactoryPatternRunner : IPatterRunner
+    {
+        public void RunPattern()
         {
             var factory = new SimpleFactoryPattern();
             var bmw3 = factory.createBMW(3);
             var bmw5 = factory.createBMW(5);
-        }*/
+        }
     }
 }

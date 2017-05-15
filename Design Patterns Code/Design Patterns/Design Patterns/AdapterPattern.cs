@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BuilderPattern;
+using TemplateMethodPattern;
 
 namespace AdapterPattern
 {
@@ -41,12 +43,15 @@ namespace AdapterPattern
         {
             _adaptee.MethodB();
         }
+    }
 
-       /* public static void Main()
+    public class AdapterPatternRunner : IPatterRunner
+    {
+        public void RunPattern()
         {
             var adapter = new Adapter();
             var client = new Client(adapter);
             client.Request();
-        }*/
+        }
     }
 }
