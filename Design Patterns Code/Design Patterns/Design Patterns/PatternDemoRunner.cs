@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using BuilderPattern;
+using ProxyPattern;
 
 namespace TemplateMethodPattern
 {
@@ -35,7 +36,7 @@ namespace TemplateMethodPattern
         public static void Main()
         {
             var config = new RunnerConfig();
-            config.Register(new BuilderPatternRunner());
+            config.Register(new ProxyPatternRunner());
             config.ExecuteAllRunners();
             Console.ReadLine();
         }
